@@ -509,7 +509,7 @@ RegisterNetEvent('cdn-fuel:client:grabnozzle', function()
 				local dist = #(grabbednozzlecoords - currentcoords)
 				if not TargetCreated then if Config.FuelTargetExport then exports[Config.TargetResource]:AllowRefuel(true) end end
 				TargetCreated = true
-				if dist > 7.5 then
+				if dist > 6.5 then
 					if TargetCreated then if Config.FuelTargetExport then exports[Config.TargetResource]:AllowRefuel(false) end end
 					TargetCreated = true
 					holdingnozzle = false
@@ -527,7 +527,7 @@ RegisterNetEvent('cdn-fuel:client:grabnozzle', function()
 						StopFireInRange(grabbednozzlecoords.x, grabbednozzlecoords.y, grabbednozzlecoords.z - 1, 3.0)
 					end
 				end
-				Wait(2500)
+				Wait(10)
 			end
 		end)
 	end
@@ -2205,7 +2205,7 @@ RegisterNetEvent('cdn-fuel:client:grabnozzle:special', function()
 					StopFireInRange(grabbednozzlecoords.x, grabbednozzlecoords.y, grabbednozzlecoords.z - 1, 3.0)
 				end
 			end
-			Wait(2500)
+			Wait(10)
 		end
 	end)
 end)
