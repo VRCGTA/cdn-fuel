@@ -520,7 +520,7 @@ RegisterNetEvent('cdn-fuel:client:grabnozzle', function()
 						DeleteRope(Rope)
 					end
 					if Config.FuelNozzleExplosion then
-						AddExplosion(grabbednozzlecoords.x, grabbednozzlecoords.y, grabbednozzlecoords.z, 'EXP_TAG_PROPANE', 1.0, true,false, 5.0)
+						AddExplosion(grabbednozzlecoords.x, grabbednozzlecoords.y, grabbednozzlecoords.z, 'EXP_TAG_PROPANE', 7.0, true,false, 5.0)
 						StartScriptFire(grabbednozzlecoords.x, grabbednozzlecoords.y, grabbednozzlecoords.z - 1,25,false)
 						SetFireSpreadRate(10.0)
 						Wait(5000)
