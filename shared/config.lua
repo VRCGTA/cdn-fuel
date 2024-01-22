@@ -169,7 +169,16 @@ Config.ElectricVehicles = { -- List of Electric Vehicles in the Base Game.
     ["dilettante"] = {
         isElectric = true,
     },
-    ["khamelion"] = {
+    ["buffalo5"] = {
+        isElectric = true,
+    },
+    ["coureur"] = {
+        isElectric = true,
+    },
+    ["powersurge"] = {
+        isElectric = true,
+    },
+    ["virtue"] = {
         isElectric = true,
     },
 }
