@@ -2599,7 +2599,8 @@ CreateThread(function()
 						return true
 					end
 				end,
-				event = 'cdn-fuel:client:RefuelMenu'
+				event = 'cdn-fuel:client:RefuelMenu',
+				bones = bones,
 			},
 			[2] = {
 				name = 'cdn-fuel:options:2',
@@ -2617,6 +2618,7 @@ CreateThread(function()
 					end
 				end,
 				event = "cdn-fuel:client:electric:RefuelMenu",
+				bones = bones,
 			}
 		}
 
