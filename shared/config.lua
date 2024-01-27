@@ -204,17 +204,17 @@ Config.Classes = { -- Class multipliers. If you want SUVs to use less fuel, you 
 	[7] = 1.0, -- Super
 	[8] = 1.0, -- Motorcycles
 	[9] = 1.0, -- Off-road
-	[10] = 1.0, -- Industrial
-	[11] = 1.0, -- Utility
-	[12] = 1.0, -- Vans
+	[10] = 0.6, -- Industrial
+	[11] = 0.6, -- Utility
+	[12] = 0.6, -- Vans
 	[13] = 0.0, -- Cycles
 	[14] = 1.0, -- Boats
 	[15] = 1.0, -- Helicopters
 	[16] = 1.0, -- Planes
-	[17] = 1.0, -- Service
+	[17] = 0.6, -- Service
 	[18] = 1.0, -- Emergency
 	[19] = 1.0, -- Military
-	[20] = 1.0, -- Commercial
+	[20] = 0.6, -- Commercial
 	[21] = 1.0, -- Trains
 }
 
