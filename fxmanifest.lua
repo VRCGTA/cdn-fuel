@@ -24,6 +24,7 @@ shared_scripts {
     '@qb-core/shared/locale.lua',
     -- '@ox_lib/init.lua', -- OX_Lib, only line this in if you have ox_lib and are using them.
     'locales/en.lua', -- English Locales
+    'locales/*.lua',
     -- 'locales/de.lua', -- German / Deutsch Locales
     -- 'locales/fr.lua', -- French / Français Locales
     -- 'locales/es.lua', -- Spanish / Español / Española Locales

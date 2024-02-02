@@ -247,8 +247,10 @@ local Translations = {
     syphon_dispatch_string = "(10-90) - Vol d'essence",
 }
 
-Lang = Locale:new({
-    phrases = Translations,
-    warnOnMissing = true,
-    fallbackLang = Lang,
-})
+Locale:registerLocale(false, 'fr', function()
+    Lang = Locale:new({
+        phrases = Translations,
+        warnOnMissing = true,
+        fallbackLang = Lang,
+    })
+end)

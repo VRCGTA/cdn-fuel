@@ -244,4 +244,11 @@ local Translations = {
     syphon_not_enough_gas = "Sul ei ole piisavalt kütust, et panna nii palju!",
     syphon_dispatch_string = "(10-90) - KÜTUSE VARGUS",
 }
-Lang = Locale:new({phrases = Translations, warnOnMissing = true})
+
+Locale:registerLocale(false, 'ee', function()
+    Lang = Locale:new({
+        phrases = Translations,
+        warnOnMissing = true,
+        fallbackLang = Lang,
+    })
+end)

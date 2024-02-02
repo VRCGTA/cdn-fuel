@@ -244,4 +244,11 @@ local Translations = {
     syphon_not_enough_gas = "You don't have enough gas to refuel that much!",
     syphon_dispatch_string = "(10-90) - Gasoline Theft",
 }
-Lang = Locale:new({phrases = Translations, warnOnMissing = true})
+
+Locale:registerLocale(true, 'en', function()
+    Lang = Locale:new({
+        phrases = Translations,
+        warnOnMissing = true,
+        fallbackLang = Lang,
+    })
+end)
