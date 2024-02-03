@@ -1417,7 +1417,6 @@ Config.GasStations = { -- Configuration options for various gas station related 
         electricchargercoords = vector4(-341.63, -1459.39, 29.76, 271.73),
         label = "Alta Street Globe Oil",
     },
-    --[[
     [28] = { -- Gabz Ottos Autos Location, Line In If Needed.
         zones = {
             vector2(794.27795410156, -802.88677978516),
@@ -1442,7 +1441,50 @@ Config.GasStations = { -- Configuration options for various gas station related 
         electricchargercoords = vector4(837.7554, -793.623, 25.23, 105.22),
         label = "Ottos Autos Globe Oil",
     },
-    ]]
+    [29] = {
+        zones = {
+            vector2(2089.95, -2846.44),
+            vector2(2133.32, -2837.32),
+            vector2(2142.08, -2920.66),
+            vector2(2098.72, -2929.99)
+        },
+        minz = 133,
+        maxz = 135,
+        pedmodel = "a_m_m_indian_01",
+        cost = 10000000,
+        shutoff = false,
+        pedcoords = {
+            x = 2132.61,
+            y = -2881.71,
+            z = 133.2,
+            h = 280.28,
+        },
+        electriccharger = nil,
+        electricchargercoords = vector4(2112.98, -2881.46, 134.19, 2.04),
+        label = "KC Drift Peak Gas Station",
+    },
+    [30] = {
+        zones = {
+            vector2(1518.03, -3376.79),
+            vector2(1517.87, -3394.62),
+            vector2(1543.87, -3395.10),
+            vector2(1543.76, -3375.55)
+        },
+        minz = 46,
+        maxz = 47,
+        pedmodel = "a_m_m_indian_01",
+        cost = 10000000,
+        shutoff = false,
+        pedcoords = {
+            x = 1531.06, 
+            y = -3375.84,
+            z = 45.85,
+            h = 179.17
+        },
+        electriccharger = nil,
+        electricchargercoords = vector4(1531.08, -3385.99, 47.17, 2.66),
+        label = "KC Drift Parking Gas Station",
+    },
     --[[
     [29] = { -- Car Meet Location, Line In If Needed.
         zones = {
