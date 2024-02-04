@@ -1451,7 +1451,7 @@ Config.GasStations = { -- Configuration options for various gas station related 
         minz = 133,
         maxz = 135,
         pedmodel = "a_m_m_indian_01",
-        cost = 10000000,
+        cost = 1000000,
         shutoff = false,
         pedcoords = {
             x = 2132.61,
@@ -1460,8 +1460,8 @@ Config.GasStations = { -- Configuration options for various gas station related 
             h = 280.28,
         },
         electriccharger = nil,
-        electricchargercoords = vector4(2112.98, -2881.46, 134.19, 2.04),
-        label = "KC Drift Peak Gas Station",
+        electricchargercoords = vector4(2112.98, -2881.46, 133.19, 2.04),
+        label = "Kush Park Drift Island Peak Gas Station",
     },
     [30] = {
         zones = {
@@ -1473,7 +1473,7 @@ Config.GasStations = { -- Configuration options for various gas station related 
         minz = 46,
         maxz = 47,
         pedmodel = "a_m_m_indian_01",
-        cost = 10000000,
+        cost = 1000000,
         shutoff = false,
         pedcoords = {
             x = 1531.06, 
@@ -1482,8 +1482,8 @@ Config.GasStations = { -- Configuration options for various gas station related 
             h = 179.17
         },
         electriccharger = nil,
-        electricchargercoords = vector4(1531.08, -3385.99, 47.17, 2.66),
-        label = "KC Drift Parking Gas Station",
+        electricchargercoords = vector4(1531.08, -3385.99, 46.17, 2.66),
+        label = "Kush Park Drift Island Parking Gas Station",
     },
     --[[
     [29] = { -- Car Meet Location, Line In If Needed.
