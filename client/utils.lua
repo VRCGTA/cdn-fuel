@@ -75,6 +75,7 @@ function CreateBlip(coords, label)
 	end
 	SetBlipScale(blip, 0.6)
 	SetBlipDisplay(blip, 4)
+	SetBlipCategory(blip, 10)
 	SetBlipAsShortRange(blip, true)
 	BeginTextCommandSetBlipName("STRING")
 	AddTextComponentString(label)

@@ -215,7 +215,6 @@ else
 	end)
 
 	CreateThread(function()
-		TriggerServerEvent('cdn-fuel:server:updatelocationlabels')
 		Wait(1000)
 		local gasStationCoords
 		for i = 1, #Config.GasStations, 1 do
@@ -223,10 +222,12 @@ else
 			gasStationCoords = vector3(Config.GasStations[location].pedcoords.x, Config.GasStations[location].pedcoords.y, Config.GasStations[location].pedcoords.z)
 			GasStationBlips[location] = CreateBlip(gasStationCoords, Config.GasStations[location].label)
 		end
+		TriggerServerEvent('cdn-fuel:server:updatelocationlabels')
 	end)
 end
 
 CreateThread(function()
+	AddTextEntry('BLIP_PROPCAT', 'Gas Station')
 	for station_id = 1, #Config.GasStations, 1 do
 		Stations[station_id] = PolyZone:Create(Config.GasStations[station_id].zones, {
 			name = "CDN_FUEL_GAS_STATION_"..station_id,
