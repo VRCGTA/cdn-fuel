@@ -1622,6 +1622,22 @@ RegisterNetEvent('cdn-fuel:jerrycan:refueljerrycan', function(data)
 
 	local ped = PlayerPedId()
 
+	local refueling = true
+	CreateThread(function()
+		while refueling do
+			local items = QBCore.Functions.GetPlayerData().items
+			local item = items[itemData.slot]
+			if item == nil or item.name ~= "jerrycan" then
+				if Config.Ox.Input then
+					lib.cancelProgress()
+				else
+					TriggerEvent('progressbar:client:cancel')
+				end
+			end
+			Wait(0)
+		end
+	end)
+
 	if Config.Ox.Input then
 		local JerryCanMaxRefuel = (Config.JerryCanCap - jerrycanfuelamount)
 		local refuel = lib.inputDialog(Lang:t("input_select_refuel_header"), {Lang:t("input_max_fuel_footer_1") .. JerryCanMaxRefuel .. Lang:t("input_max_fuel_footer_2")})
@@ -1656,6 +1672,7 @@ RegisterNetEvent('cdn-fuel:jerrycan:refueljerrycan', function(data)
 					clip = Config.JerryCanAnim
 				},
 			}) then 
+				refueling = false
 				SetEntityVisible(fuelnozzle, true, 0)
 				DeleteObject(JerrycanProp)
 				StopAnimTask(ped, Config.JerryCanAnimDict, Config.JerryCanAnim, 1.0)
@@ -1680,6 +1697,7 @@ RegisterNetEvent('cdn-fuel:jerrycan:refueljerrycan', function(data)
 				local total = (tonumber(refuelAmount) * FuelPrice) + GlobalTax(tonumber(refuelAmount) * FuelPrice)
 				TriggerServerEvent('cdn-fuel:server:PayForFuel', total, "cash", FuelPrice)
 			else 
+				refueling = false
 				SetEntityVisible(fuelnozzle, true, 0)
 				DeleteObject(JerrycanProp)
 				StopAnimTask(ped, Config.JerryCanAnimDict, Config.JerryCanAnim, 1.0)
@@ -1720,6 +1738,7 @@ RegisterNetEvent('cdn-fuel:jerrycan:refueljerrycan', function(data)
 				anim = Config.JerryCanAnim,
 				flags = 17,
 			}, {}, {}, function() -- Play When Done
+				refueling = false
 				SetEntityVisible(fuelnozzle, true, 0)
 				DeleteObject(JerrycanProp)
 				StopAnimTask(ped, Config.JerryCanAnimDict, Config.JerryCanAnim, 1.0)
@@ -1748,6 +1767,7 @@ RegisterNetEvent('cdn-fuel:jerrycan:refueljerrycan', function(data)
 				local total = (tonumber(refuel.amount) * FuelPrice) + GlobalTax(tonumber(refuel.amount) * FuelPrice)
 				TriggerServerEvent('cdn-fuel:server:PayForFuel', total, "cash", FuelPrice, false, CachedFuelPrice)
 			end, function() -- Play When Cancel
+				refueling = false
 				SetEntityVisible(fuelnozzle, true, 0)
 				DeleteObject(JerrycanProp)
 				StopAnimTask(ped, Config.JerryCanAnimDict, Config.JerryCanAnim, 1.0)
