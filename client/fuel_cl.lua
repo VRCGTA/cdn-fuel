@@ -330,7 +330,7 @@ if Config.RenewedPhonePayment then
 						FuelPrice = FuelPrice - (FuelPrice*discount)
 
 						if Config.FuelDebug then
-							print("Your discount for Emergency Services is set @ "..discount.."%. Setting new price to: $"..FuelPrice)
+							print("Your discount for Emergency Services is set @ "..discount.."%. Setting new price to: 𝕍"..FuelPrice)
 						end
 					end
 				else
@@ -642,7 +642,7 @@ RegisterNetEvent('cdn-fuel:client:FinalMenu', function(purchasetype)
 			else
 				if discount <= 0 then discount = 0 end
 			end
-			if Config.FuelDebug then print("Before we apply the discount the FuelPrice is: $"..FuelPrice) end
+			if Config.FuelDebug then print("Before we apply the discount the FuelPrice is: 𝕍"..FuelPrice) end
 			if discount ~= 0 then
 				if discount == 100 then
 					CachedFuelPrice = FuelPrice
@@ -658,7 +658,7 @@ RegisterNetEvent('cdn-fuel:client:FinalMenu', function(purchasetype)
 					CachedFuelPrice = FuelPrice
 					FuelPrice = (FuelPrice) - (FuelPrice*discount)
 					if Config.FuelDebug then
-						print("Your discount for Emergency Services is set @ "..discount.."%. Setting new price to: $"..FuelPrice)
+						print("Your discount for Emergency Services is set @ "..discount.."%. Setting new price to: 𝕍"..FuelPrice)
 					end
 				end
 			else
@@ -732,8 +732,8 @@ RegisterNetEvent('cdn-fuel:client:FinalMenu', function(purchasetype)
 				local wholetankcost = (FuelPrice * ReserveLevels)
 				local wholetankcostwithtax = math.ceil(FuelPrice * ReserveLevels + GlobalTax(wholetankcost))
 				fuel = exports['qb-input']:ShowInput({
-					header = "Select the Amount of Fuel<br>Current Price: $" ..
-					FuelPrice .. " / Liter <br> Current Fuel: " .. finalfuel .. " Liters <br> Full Tank Cost: $" ..
+					header = "Select the Amount of Fuel<br>Current Price: 𝕍" ..
+					FuelPrice .. " / Liter <br> Current Fuel: " .. finalfuel .. " Liters <br> Full Tank Cost: 𝕍" ..
 					wholetankcostwithtax .. "",
 					submitText = Lang:t("input_insert_nozzle"),
 					inputs = { {
@@ -745,8 +745,8 @@ RegisterNetEvent('cdn-fuel:client:FinalMenu', function(purchasetype)
 				})
 			else
 				fuel = exports['qb-input']:ShowInput({
-					header = "Select the Amount of Fuel<br>Current Price: $" ..
-					FuelPrice .. " / Liter <br> Current Fuel: " .. finalfuel .. " Liters <br> Full Tank Cost: $" ..
+					header = "Select the Amount of Fuel<br>Current Price: 𝕍" ..
+					FuelPrice .. " / Liter <br> Current Fuel: " .. finalfuel .. " Liters <br> Full Tank Cost: 𝕍" ..
 					wholetankcostwithtax .. "",
 					submitText = Lang:t("input_insert_nozzle"),
 					inputs = { {
@@ -759,8 +759,8 @@ RegisterNetEvent('cdn-fuel:client:FinalMenu', function(purchasetype)
 			end
 		else
 			fuel = exports['qb-input']:ShowInput({
-				header = "Select the Amount of Fuel<br>Current Price: $" ..
-				FuelPrice .. " / Liter <br> Current Fuel: " .. finalfuel .. " Liters <br> Full Tank Cost: $" ..
+				header = "Select the Amount of Fuel<br>Current Price: 𝕍" ..
+				FuelPrice .. " / Liter <br> Current Fuel: " .. finalfuel .. " Liters <br> Full Tank Cost: 𝕍" ..
 				wholetankcostwithtax .. "",
 				submitText = Lang:t("input_insert_nozzle"),
 				inputs = { {
@@ -964,7 +964,7 @@ RegisterNetEvent('cdn-fuel:client:RefuelVehicle', function(data)
 			else
 				if discount <= 0 then discount = 0 end
 			end
-			if Config.FuelDebug then print("Before we apply the discount the FuelPrice is: $"..FuelPrice) end
+			if Config.FuelDebug then print("Before we apply the discount the FuelPrice is: 𝕍"..FuelPrice) end
 			if discount ~= 0 then
 				if discount == 100 then
 					CachedFuelPrice = FuelPrice
@@ -982,7 +982,7 @@ RegisterNetEvent('cdn-fuel:client:RefuelVehicle', function(data)
 					FuelPrice = FuelPrice - (FuelPrice*discount)
 
 					if Config.FuelDebug then
-						print("Your discount for Emergency Services is set @ "..discount.."%. Setting new price to: $"..FuelPrice)
+						print("Your discount for Emergency Services is set @ "..discount.."%. Setting new price to: 𝕍"..FuelPrice)
 					end
 				end
 			else
@@ -1042,7 +1042,7 @@ RegisterNetEvent('cdn-fuel:client:RefuelVehicle', function(data)
 								TriggerServerEvent('cdn-fuel:station:server:updatereserves', "remove", finalrefuelamount, ReserveLevels, CurrentLocation)
 								if CachedFuelPrice ~= nil then
 									if Config.FuelDebug then
-										print("We have a cached price: $"..CachedFuelPrice..", we will credit this to the gas station.")
+										print("We have a cached price: 𝕍"..CachedFuelPrice..", we will credit this to the gas station.")
 									end
 									TriggerServerEvent('cdn-fuel:station:server:updatebalance', "add", finalrefuelamount, StationBalance, CurrentLocation, CachedFuelPrice)
 									CachedFuelPrice = nil
@@ -1101,7 +1101,7 @@ RegisterNetEvent('cdn-fuel:client:RefuelVehicle', function(data)
 							TriggerServerEvent('cdn-fuel:station:server:updatereserves', "remove", fuelamount, ReserveLevels, CurrentLocation)
 							if CachedFuelPrice ~= nil then
 								if Config.FuelDebug then
-									print("We have a cached price: $"..CachedFuelPrice..", we will credit this to the gas station.")
+									print("We have a cached price: 𝕍"..CachedFuelPrice..", we will credit this to the gas station.")
 								end
 								TriggerServerEvent('cdn-fuel:station:server:updatebalance', "add", fuelamount, StationBalance, CurrentLocation, CachedFuelPrice)
 								CachedFuelPrice = nil
@@ -1149,7 +1149,7 @@ RegisterNetEvent('cdn-fuel:client:RefuelVehicle', function(data)
 							TriggerServerEvent('cdn-fuel:station:server:updatereserves', "remove", fuelamount, ReserveLevels, CurrentLocation)
 							if CachedFuelPrice ~= nil then
 								if Config.FuelDebug then
-									print("We have a cached price: $"..CachedFuelPrice..", we will credit this to the gas station.")
+									print("We have a cached price: 𝕍"..CachedFuelPrice..", we will credit this to the gas station.")
 								end
 								TriggerServerEvent('cdn-fuel:station:server:updatebalance', "add", fuelamount, StationBalance, CurrentLocation, CachedFuelPrice)
 								CachedFuelPrice = nil

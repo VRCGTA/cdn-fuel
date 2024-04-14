@@ -332,7 +332,7 @@ if Config.PlayerOwnedGasStationsEnabled then -- This is so Player Owned Gas Stat
         end, location)
         Wait(Config.WaitTime)
         if CanSell then
-            if Config.FuelDebug then print("Attempting to sell for: $"..SalePrice) end
+            if Config.FuelDebug then print("Attempting to sell for: 𝕍"..SalePrice) end
             TriggerServerEvent('cdn-fuel:stations:server:sellstation', location)
             if Config.FuelDebug then print("Event Triggered") end
         else
@@ -784,7 +784,7 @@ if Config.PlayerOwnedGasStationsEnabled then -- This is so Player Owned Gas Stat
                                 location = location,
                             },
                             metadata = {
-                                {label = 'Current Fuel Price: ', value = "$"..Comma_Value(StationFuelPrice)..Lang:t("input_alter_fuel_price_header_2")},
+                                {label = 'Current Fuel Price: ', value = "𝕍"..Comma_Value(StationFuelPrice)..Lang:t("input_alter_fuel_price_header_2")},
                             },
                             disabled = CanNotChangeFuelPrice,
                         },
@@ -853,7 +853,7 @@ if Config.PlayerOwnedGasStationsEnabled then -- This is so Player Owned Gas Stat
                     {
                         header = Lang:t("menu_alter_fuel_price_header"),
                         icon = "fas fa-usd",
-                        txt = "I want to change the price of fuel at my Gas Station! <br> Currently, it is $"..StationFuelPrice..Lang:t("input_alter_fuel_price_header_2") ,
+                        txt = "I want to change the price of fuel at my Gas Station! <br> Currently, it is 𝕍"..StationFuelPrice..Lang:t("input_alter_fuel_price_header_2") ,
                         params = {
                             event = "cdn-fuel:stations:client:changefuelprice",
                             args = {
@@ -1186,7 +1186,7 @@ if Config.PlayerOwnedGasStationsEnabled then -- This is so Player Owned Gas Stat
 
 
         if bankmoney < costofstation then
-            QBCore.Functions.Notify(Lang:t("not_enough_money_in_bank").." $"..costofstation, 'error', 7500) return
+            QBCore.Functions.Notify(Lang:t("not_enough_money_in_bank").." 𝕍"..costofstation, 'error', 7500) return
         end
 
         if Config.Ox.Menu then
