@@ -1403,6 +1403,7 @@ RegisterNetEvent('cdn-fuel:jerrycan:refuelvehicle', function(data)
 	local vehfuel = math.floor(GetFuel(vehicle))
 	local maxvehrefuel = (100 - math.ceil(vehfuel))
 	local itemData = data.itemData
+	print(json.encode(itemData))
 	local jerrycanfuelamount
 	if Config.Ox.Inventory then
 		jerrycanfuelamount = tonumber(itemData.metadata.cdn_fuel)
@@ -1421,6 +1422,21 @@ RegisterNetEvent('cdn-fuel:jerrycan:refuelvehicle', function(data)
 		NotElectric = true
 	end
 	Wait(50)
+	local refueling = true
+	CreateThread(function()
+		while refueling do
+			local items = QBCore.Functions.GetPlayerData().items
+			local item = items[itemData.slot]
+			if item == nil or item.name ~= "jerrycan" then
+				if Config.Ox.Input then
+					lib.cancelProgress()
+				else
+					TriggerEvent('progressbar:client:cancel')
+				end
+			end
+			Wait(0)
+		end
+	end)
 	if NotElectric then
 		if maxvehrefuel < Config.JerryCanCap then
 			maxvehrefuel = maxvehrefuel
@@ -1461,6 +1477,7 @@ RegisterNetEvent('cdn-fuel:jerrycan:refuelvehicle', function(data)
 							clip = Config.JerryCanAnim
 						},
 					}) then 
+						refueling = false
 						DeleteObject(JerrycanProp)
 						StopAnimTask(ped, Config.JerryCanAnimDict, Config.JerryCanAnim, 1.0)
 						QBCore.Functions.Notify(Lang:t("jerry_can_success_vehicle"), 'success')
@@ -1469,6 +1486,7 @@ RegisterNetEvent('cdn-fuel:jerrycan:refuelvehicle', function(data)
 						TriggerServerEvent('cdn-fuel:info', "remove", tonumber(refuelAmount), srcPlayerData, JerryCanItemData)
 						SetFuel(vehicle, (vehfuel + refuelAmount))
 					else 
+						refueling = false
 						DeleteObject(JerrycanProp)
 						StopAnimTask(ped, Config.JerryCanAnimDict, Config.JerryCanAnim, 1.0)
 						QBCore.Functions.Notify(Lang:t("cancelled"), 'error')
@@ -1484,6 +1502,7 @@ RegisterNetEvent('cdn-fuel:jerrycan:refuelvehicle', function(data)
 						anim = Config.JerryCanAnim,
 						flags = 17,
 					}, {}, {}, function() -- Play When Done
+						refueling = false
 						DeleteObject(JerrycanProp)
 						StopAnimTask(ped, Config.JerryCanAnimDict, Config.JerryCanAnim, 1.0)
 						QBCore.Functions.Notify(Lang:t("jerry_can_success_vehicle"), 'success')
@@ -1492,6 +1511,7 @@ RegisterNetEvent('cdn-fuel:jerrycan:refuelvehicle', function(data)
 						TriggerServerEvent('cdn-fuel:info', "remove", tonumber(refuelAmount), srcPlayerData, JerryCanItemData)
 						SetFuel(vehicle, (vehfuel + refuelAmount))
 					end, function() -- Play When Cancel
+						refueling = false
 						DeleteObject(JerrycanProp)
 						StopAnimTask(ped, Config.JerryCanAnimDict, Config.JerryCanAnim, 1.0)
 						QBCore.Functions.Notify(Lang:t("cancelled"), 'error')
@@ -1537,6 +1557,7 @@ RegisterNetEvent('cdn-fuel:jerrycan:refuelvehicle', function(data)
 							clip = Config.JerryCanAnim
 						},
 					}) then 
+						refueling = false
 						DeleteObject(JerrycanProp)
 						StopAnimTask(ped, Config.JerryCanAnimDict, Config.JerryCanAnim, 1.0)
 						QBCore.Functions.Notify(Lang:t("jerry_can_success_vehicle"), 'success')
@@ -1545,6 +1566,7 @@ RegisterNetEvent('cdn-fuel:jerrycan:refuelvehicle', function(data)
 						TriggerServerEvent('cdn-fuel:info', "remove", tonumber(refuel.amount), srcPlayerData, JerryCanItemData)
 						SetFuel(vehicle, (vehfuel + refuel.amount))
 					else 
+						refueling = false
 						DeleteObject(JerrycanProp)
 						StopAnimTask(ped, Config.JerryCanAnimDict, Config.JerryCanAnim, 1.0)
 						QBCore.Functions.Notify(Lang:t("cancelled"), 'error')
@@ -1560,6 +1582,7 @@ RegisterNetEvent('cdn-fuel:jerrycan:refuelvehicle', function(data)
 						anim = Config.JerryCanAnim,
 						flags = 17,
 					}, {}, {}, function() -- Play When Done
+						refueling = false
 						DeleteObject(JerrycanProp)
 						StopAnimTask(ped, Config.JerryCanAnimDict, Config.JerryCanAnim, 1.0)
 						QBCore.Functions.Notify(Lang:t("jerry_can_success_vehicle"), 'success')
@@ -1568,6 +1591,7 @@ RegisterNetEvent('cdn-fuel:jerrycan:refuelvehicle', function(data)
 						TriggerServerEvent('cdn-fuel:info', "remove", tonumber(refuel.amount), srcPlayerData, JerryCanItemData)
 						SetFuel(vehicle, (vehfuel + refuel.amount))
 					end, function() -- Play When Cancel
+						refueling = false
 						DeleteObject(JerrycanProp)
 						StopAnimTask(ped, Config.JerryCanAnimDict, Config.JerryCanAnim, 1.0)
 						QBCore.Functions.Notify(Lang:t("cancelled"), 'error')
@@ -1575,7 +1599,6 @@ RegisterNetEvent('cdn-fuel:jerrycan:refuelvehicle', function(data)
 				end
 			end
 		end
-
 	else
 		QBCore.Functions.Notify(Lang:t("need_electric_charger"), 'error', 7500) return 
 	end
