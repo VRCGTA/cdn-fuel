@@ -104,7 +104,7 @@ Config.RefuelAnimationDictionary = "timetable@gardener@filling_can" -- This is f
 Config.PlayerOwnedGasStationsEnabled = true -- When true, peds will be located at all gas stations, and players will be able to talk with peds & purchase gas stations, having to manage fuel supplies.
 Config.StationFuelSalePercentage = 0.65 -- % of sales that the station gets. If they sell 4 Liters of Gas for $16 (not including taxes), they will get 16*Config.StationFuelSalePercentage back from the sale. Treat this as tax, also, it balances the profit margins a bit.
 Config.EmergencyShutOff = false -- When true, players can walk up to the ped and shut off the pumps at a gas station. While false, this option is disabled, because it can obviously be an issue. 
-Config.UnlimitedFuel = false -- When true, the fuel stations will not require refuelling by gas station owners, this is for the early stages of implementation.
+Config.UnlimitedFuel = true -- When true, the fuel stations will not require refuelling by gas station owners, this is for the early stages of implementation.
 Config.MaxFuelReserves = 4000 -- This is the maximum amount that the fuel station's reserves can hold.
 Config.FuelReservesPrice = 2.0 -- This is the price of fuel reserves for gas station owners.
 Config.GasStationSellPercentage = 50 -- This is the percentage that players will get of the gas stations price, when they sell a location!
@@ -787,7 +787,7 @@ Config.AirAndWaterVehicleFueling = {
         -- }
     },
     ['refuel_button'] = 47, -- "G" Button for Draw Text.
-    ['nozzle_length'] = 6.5, -- The max distance you can go from the "Special Pump" before the nozzle in returned to the pump.
+    ['nozzle_length'] = 15.0, -- The max distance you can go from the "Special Pump" before the nozzle in returned to the pump.
     ['air_fuel_price'] = 10, -- Price Per Liter of Fuel for Air Vehicles (Emergency Services Discount Still Applies)
     ['water_fuel_price'] = 4, -- Price Per Liter of Fuel for Water Vehicles (Emergency Services Discount Still Applies)
 }
